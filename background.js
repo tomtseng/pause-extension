@@ -31,14 +31,14 @@ chrome.webNavigation.onBeforeNavigate.addListener((details) => {
     const pathname = url.pathname;
 
     const match = sites.find(
-      (s) => hostname === s.domain || hostname.endsWith("." + s.domain)
+      (s) => hostname === s.domain || hostname.endsWith("." + s.domain),
     );
 
     if (!match) return;
 
     // Check if the path matches any exception
     const isExcepted = match.exceptions.some(
-      (exc) => pathname === exc || pathname.startsWith(exc + "/")
+      (exc) => pathname === exc || pathname.startsWith(exc + "/"),
     );
 
     if (isExcepted) return;

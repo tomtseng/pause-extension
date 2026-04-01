@@ -1,103 +1,111 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pause & Breathe</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pause & Breathe</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: #1a1a2e;
-      color: #e0e0e0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      overflow: hidden;
-    }
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #1a1a2e;
+        color: #e0e0e0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        overflow: hidden;
+      }
 
-    .container {
-      text-align: center;
-      z-index: 1;
-    }
+      .container {
+        text-align: center;
+        z-index: 1;
+      }
 
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 300;
-      margin-bottom: 1rem;
-      color: #ffffff;
-    }
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+        color: #ffffff;
+      }
 
-    .subtitle {
-      font-size: 1.2rem;
-      color: #8888aa;
-      margin-bottom: 3rem;
-    }
+      .subtitle {
+        font-size: 1.2rem;
+        color: #8888aa;
+        margin-bottom: 3rem;
+      }
 
-    .breath-circle {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #4a90d9 0%, #2a5090 100%);
-      margin: 0 auto 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: breathe 4s ease-in-out infinite;
-      box-shadow: 0 0 60px rgba(74, 144, 217, 0.3);
-    }
+      .breath-circle {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #4a90d9 0%, #2a5090 100%);
+        margin: 0 auto 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: breathe 4s ease-in-out infinite;
+        box-shadow: 0 0 60px rgba(74, 144, 217, 0.3);
+      }
 
-    .breath-text {
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: #fff;
-      letter-spacing: 0.1em;
-    }
+      .breath-text {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: #fff;
+        letter-spacing: 0.1em;
+      }
 
-    @keyframes breathe {
-      0%, 100% { transform: scale(0.8); opacity: 0.7; }
-      50% { transform: scale(1.15); opacity: 1; }
-    }
+      @keyframes breathe {
+        0%,
+        100% {
+          transform: scale(0.8);
+          opacity: 0.7;
+        }
+        50% {
+          transform: scale(1.15);
+          opacity: 1;
+        }
+      }
 
-    .timer {
-      font-size: 3rem;
-      font-weight: 200;
-      color: #4a90d9;
-      margin-bottom: 1rem;
-      font-variant-numeric: tabular-nums;
-    }
+      .timer {
+        font-size: 3rem;
+        font-weight: 200;
+        color: #4a90d9;
+        margin-bottom: 1rem;
+        font-variant-numeric: tabular-nums;
+      }
 
-    .destination {
-      font-size: 0.9rem;
-      color: #555570;
-      margin-top: 2rem;
-    }
+      .destination {
+        font-size: 0.9rem;
+        color: #555570;
+        margin-top: 2rem;
+      }
 
-    .destination span {
-      color: #7777aa;
-    }
+      .destination span {
+        color: #7777aa;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Take a breath</h1>
+      <p class="subtitle">A moment of stillness before you continue</p>
 
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Take a breath</h1>
-    <p class="subtitle">A moment of stillness before you continue</p>
+      <div class="breath-circle">
+        <span class="breath-text">breathe</span>
+      </div>
 
-    <div class="breath-circle">
-      <span class="breath-text">breathe</span>
+      <div class="timer" id="timer">10</div>
+
+      <div class="destination">Heading to <span id="destination"></span></div>
     </div>
 
-    <div class="timer" id="timer">10</div>
-
-    <div class="destination">
-      Heading to <span id="destination"></span>
-    </div>
-  </div>
-
-  <script src="pause.js"></script>
-</body>
+    <script src="pause.js"></script>
+  </body>
 </html>

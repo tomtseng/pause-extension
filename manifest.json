@@ -3,10 +3,7 @@
   "name": "Pause & Breathe",
   "version": "1.0",
   "description": "Take a mindful pause before visiting distracting websites.",
-  "permissions": [
-    "storage",
-    "webNavigation"
-  ],
+  "permissions": ["storage", "webNavigation"],
   "background": {
     "service_worker": "background.js"
   },
