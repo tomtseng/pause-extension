@@ -1,13 +1,22 @@
 const params = new URLSearchParams(window.location.search);
 const redirectUrl = params.get("redirect");
 
-// Show destination
+// Validate redirect URL
 const dest = document.getElementById("destination");
+let redirectHost = "";
 try {
-  dest.textContent = new URL(redirectUrl).hostname;
+  const parsed = new URL(redirectUrl);
+  if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
+    throw new Error("bad protocol");
+  }
+  redirectHost = parsed.hostname;
 } catch {
-  dest.textContent = redirectUrl;
+  dest.textContent = "invalid URL";
+  document.getElementById("timer").style.display = "none";
+  throw new Error("Invalid redirect URL");
 }
+
+dest.textContent = redirectHost;
 
 function proceed() {
   // Set passthrough flag so background.js allows this navigation

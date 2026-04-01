@@ -56,7 +56,10 @@ function render(sites) {
       entry.exceptions.forEach((exc) => {
         const item = document.createElement("div");
         item.className = "exception-item";
-        item.textContent = "allow " + exc;
+
+        const label = document.createElement("span");
+        label.textContent = "allow " + exc;
+        item.appendChild(label);
 
         const rmBtn = document.createElement("button");
         rmBtn.className = "remove-exc";

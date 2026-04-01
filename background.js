@@ -17,7 +17,12 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.webNavigation.onBeforeNavigate.addListener((details) => {
   if (details.frameId !== 0) return;
 
-  const url = new URL(details.url);
+  let url;
+  try {
+    url = new URL(details.url);
+  } catch {
+    return;
+  }
   if (url.protocol === "chrome-extension:") return;
 
   chrome.storage.sync.get("blockedSites", (data) => {
@@ -42,7 +47,13 @@ chrome.webNavigation.onBeforeNavigate.addListener((details) => {
       const passthrough = sessionData.passthrough || {};
       const key = details.tabId.toString();
 
-      if (passthrough[key] && Date.now() - passthrough[key] < 30000) {
+      // Prune expired passthrough entries
+      const now = Date.now();
+      for (const [k, v] of Object.entries(passthrough)) {
+        if (now - v >= 30000) delete passthrough[k];
+      }
+
+      if (passthrough[key] && now - passthrough[key] < 30000) {
         delete passthrough[key];
         chrome.storage.session.set({ passthrough });
         return;
