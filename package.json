@@ -5,11 +5,18 @@
     "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "validate:manifest": "node -e \"JSON.parse(require('fs').readFileSync('manifest.json','utf8')); console.log('manifest.json is valid JSON')\""
+    "validate:manifest": "node -e \"JSON.parse(require('fs').readFileSync('manifest.json','utf8')); console.log('manifest.json is valid JSON')\"",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.js": "eslint",
+    "*.{js,html,json,md}": "prettier --check"
   },
   "devDependencies": {
     "eslint": "^9.0.0",
     "globals": "^16.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "prettier": "^3.0.0"
   }
 }
